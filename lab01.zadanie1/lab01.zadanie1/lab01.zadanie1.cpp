@@ -1,11 +1,12 @@
-﻿#include <iostream>
+﻿#include <iostream>                                      // 1. Вводим библиотеку
+using namespace std;                                     // 2. Используем пространство имён std, чтобы каждый раз не писать "std::"
 
-int main()
+int main()                                               // 3. Задаем функцию
 {
-    int a;
-    std::cout << "Enter number: " << std::endl;
-    std::cin >> a;
-    int b = a * a;
-    std::cout << "Square of number: " << b;
-    return 0;
+    int num1;                                            // 4. Вводим целочисленную переменную
+    cout << "Enter number: ";                            // 5. Выводим текст
+    cin >> num1;                                         // 6. Пользователь вводит переменную с консоли
+    int squarenum1 = num1 * num1;                        // 7. Вводим вторую переменную и присваиваем ей значение квадрата первой переменной
+    cout << "Square of number: " << squarenum1 << endl;  // 8. Выводим вторую переменную
+    return 0;                                            // 9. Возвращаем функции нулевое значение                                                               
 }

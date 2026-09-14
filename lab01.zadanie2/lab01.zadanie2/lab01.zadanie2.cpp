@@ -1,15 +1,19 @@
-﻿#include <iostream>
+﻿#include <iostream>                                             // 1. Вводим библиотеки, iomanip для форматирования вывода
+#include <iomanip>
+using namespace std;                                            // 2. Используем пространство имён std, чтобы каждый раз не писать "std::"
 
-int main()
+int main()                                                      // 3. Объявляем главную функцию программы
 {
-    int a;
-    std::cout << "Enter number: " << std::endl;
-    std::cin >> a;
+    double num;                                                 // 4. Объявляем дробную переменную
+    cout << "Enter number: ";                                   // 5. Выводим текст             
+    cin >> num;                                                 // 6. Пользователь вводит переменную с консоли
 
-    int b = a * a;
-    int c = a * a * a;
-    std::cout << "Square of number: " << b << std::endl;
-    std::cout << "Cube of number: " << c;
+    double square = num * num;                                  // 7. Объявляем вторую переменную и присваиваем ей значение квадрата первой переменной
+    double cube = num * num * num;                              // 8. Объявляем третью переменную и присваиваем ей значение куба первой переменной
+   
+    cout << std::fixed << std::setprecision(2);                 // 9. Устанавливаем вывод с двумя цифрами после десятичной точки
+    cout << "Square of number: " << square << endl;             // 10. Строки 15-16: выводим квадрат и куб первой переменной
+    cout << "Cube of number: " << cube << endl;
 
-    return 0;
+    return 0;                                                   // 11. Возвращаем функции нулевое значение  
 }
