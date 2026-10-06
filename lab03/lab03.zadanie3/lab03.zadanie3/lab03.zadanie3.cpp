@@ -1,10 +1,11 @@
-﻿#include <iostream>
+﻿#include <iostream>                                                                 // Строки 1-3: Вводим нужные библиотеки, используем пространство имен
 #include <cmath>
 using namespace std;
+constexpr double EPSILON{ 1e-9 };                                                   // Объявляем константу для переменных с плавающей точкой и сравнения их с нулём
 
-int main() {
+int main() {                                                                        // Объявляем главную функцию
 
-	double coefficentA, coefficentB, coefficentC;
+	double coefficentA, coefficentB, coefficentC;                                   // Объявляем переменные и просим пользователя ввести
 
 	cout << "Enter coefficent a: ";
 	cin >> coefficentA;
@@ -15,38 +16,67 @@ int main() {
 	cout << "Enter coefficent c: ";
 	cin >> coefficentC;
 
-	double D = coefficentB * coefficentB - 4 * coefficentA * coefficentC;
+	double D = coefficentB * coefficentB - 4 * coefficentA * coefficentC;           // Объявляем переменную для поиска дискриминанта
 
-	if (coefficentB == 0  coefficentA == 0) {
+	if (cin.fail()) {                                                               // Обрабатываем ошибку некорректного ввода
 
-		cout << "Incorrect coefficent!" << endl;
-
-		return 0;
-	   }
-
-        else if(D < 0) {
-
-		double i{ sqrt(-D) };
-		
-		double complexx1{ coefficentA + (coefficentB * i) };
-		double complexx2{ coefficentA - (coefficentB * i) };
-
-		cout << "First complex number: " << complexx1 << endl;
-		cout << "Second complex number: " << complexx2 << endl;
+		cin.clear();
+		cin.ignore(10000);
+		cout << "Incorrect coefficent";
 
 		return 0;
 	}
+	
 	else {
 
-		double sqrtD{ sqrt(D) };
-		double x1{ (-coefficentB - sqrtD) / 2 * coefficentA };
-		double x2{ (-coefficentB + sqrtD) / 2 * coefficentA };
+	if (fabs(coefficentA) < EPSILON) {                                              // Объявляем функцию if, сначала проверяем, что ни один из коэффицентов не меньше стремящегося к нулю значению
 
-		cout << "First number: " << x1 << endl;
-		cout << "Second number: " << x2 << endl;
+		cout << "Incorrect coefficent A!" << endl;
+		         
+		if (fabs(coefficentB) < EPSILON) {
+
+			cout << "Incorrect coefficent B!" << endl;
+
+		         if (fabs(coefficentC) < EPSILON)
+
+					 cout << "Incorrect coefficent C!" << endl;
+
+		return 0;
+
+	}
+
+        else if(D < EPSILON) {                                                       // Если дискриминант стремящегося к нулю значению, объявляем мнимую единицу, и расчитываем настоящую часть и мнимую часть
+
+		double i{ sqrt(-D) };
+		double realPart{ -coefficentB / (2 * coefficentA) };
+		double imaginaryPart{ i / (2 * coefficentA) };
+
+		cout << "Complex x1 = " << realPart << " + " << imaginaryPart << i << endl;  // Выводим полученные значения по формуле
+		cout << "Complex x2 = " << realPart << " - " << imaginaryPart << i << endl;
+
+		return 0;
+	}
+
+
+		else if (D == 0) {                                                           // При дискриминанте, равном нулю будет считаться один корень
+		
+			double x{ -coefficentB / (2 * coefficentA) };
+			cout << "x: " << x << endl;
+		
+			return 0;
+		}
+	else {                                                                           // Иначе считаем корни и выводим их на консоль
+
+		double sqrtD{ sqrt(D) };
+		double x1{ (-coefficentB - sqrtD) / (2 * coefficentA) };
+		double x2{ (-coefficentB + sqrtD) / (2 * coefficentA) };
+
+		cout << "x1: " << x1 << endl;
+		cout << "x2: " << x2 << endl;
 		
 		return 0;
 	}
 
-	return 0;
+	return 0;                                                                        // Вовзращаем функции исходное значение
+}
 }
