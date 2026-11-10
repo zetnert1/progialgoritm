@@ -44,7 +44,7 @@ int main() {                                                       // Объяв
 	}
 
 	else if (n <= 0) {                                             // Проверка правильности ввода для количества кусочков 
-		cout << "Error! Enter number of pieces" << endl;
+		cout << "Error! Enter another number of pieces" << endl;
 		
 		return 0;
 	}
