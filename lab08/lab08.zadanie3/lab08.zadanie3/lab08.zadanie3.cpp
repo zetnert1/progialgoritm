@@ -1,56 +1,56 @@
-﻿#include <iostream>
+﻿#include <iostream>                                                    // Подключаем нужные библиотеки и пространство имён
 #include <cctype>
 #include <string>
 using namespace std;
 
-int main() {
+int main() {                                                           // Объявляем главную функцию
 
-	string text, text2, ntext, ntext2;
-	int isEqually{ 0 };
+	string text, text2, ntext, ntext2;                                 // Объявляем строковые переменные для исходных и обработанных фраз
+	int isEqually{ 0 };                                                // Инициализируем переменную для подсчета совпадающих символов
 
-	cout << "Enter first phrase: ";
-	getline(cin, text);
+	cout << "Enter first phrase: ";                                    // Просим пользователя ввести первую фразу
+	getline(cin, text);                                     
 
-	cout << "Enter second phrase: ";
-	getline(cin, text2);
-	
-	for (char c : text) {
+	cout << "Enter second phrase: ";                                   // Просим пользователя ввести вторую фразу
+	getline(cin, text2);                                    
 
-		if (isalnum(c)) {
+	for (char c : text) {                                              // Перебираем символы первой фразы
 
-			ntext += tolower(c);
+		if (isalnum(c)) {                                              // Отбираем буквы и цифры
+
+			ntext += tolower(c);                                       // Переводим символ в нижний регистр и добавляем в новую строку
 		}
 	}
 
-	for (char c : text2) {
+	for (char c : text2) {                                             // Перебираем символы второй фразы
 
-		if (isalnum(c)) {
+		if (isalnum(c)) {                                              // Отбираем буквы и цифры
 
-			ntext2 += tolower(c);
+			ntext2 += tolower(c);                                      // Переводим символ в нижний регистр и добавляем в новую строку
 		}
 	}
 
-	for (char i : ntext) {
-		
-		for (char j : ntext2) {
+	for (char i : ntext) {                                             // Перебираем символы первой обработанной фразы
 
-			if (j == i) {
+		for (char j : ntext2) {                                        // Перебираем символы второй обработанной фразы
 
-				isEqually++;
+			if (j == i) {                                              // Проверяем совпадение символов
+
+				isEqually++;                                           // Подсчитываем количество совпадений
 			}
 		}
 
 	}
-		
-		if (isEqually == ntext.length() && isEqually == ntext2.length()) {
 
-			cout << "Phrase is anagramm" << endl;
-		}
+	if (isEqually == ntext.length() && isEqually == ntext2.length()) { // Проверяем, равняется ли количество совпадений длине обеих строк
 
-		else {
+		cout << "Phrase is anagramm" << endl;                          // Выводим фразу, если строки являются анаграммами
+	}
 
-			cout << "Phrase is not an anagramm" << endl;
-		}
+	else {                                                             // Если условие не выполняется, выводим другую фразу
+
+		cout << "Phrase is not an anagramm" << endl;
+	}
 
 	return 0;
 }
