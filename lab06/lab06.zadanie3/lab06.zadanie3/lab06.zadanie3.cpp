@@ -13,8 +13,8 @@ int main() {                                                   // Объявля
 	if (cin.fail()) {                                          // Проверка неккоректного ввода
 
 		cin.clear();
-		cin.ignore(10000);
-		cout << "Error! Enter another number";
+		cin.ignore(10000, '\n');
+		cout << "Error! Enter another number" << endl;
 
 		return 0;
 	}
@@ -51,7 +51,7 @@ int main() {                                                   // Объявля
 
 		for (int j{ i + 1 }; j < SIZE; j++) {
 
-			if (arr[i] + arr[j] == num) {
+			if (arr[i] + arr[j] > num) {
 
 				numE++;
 			}
